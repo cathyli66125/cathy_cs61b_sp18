@@ -1,5 +1,5 @@
 public class LinkedListDeque <T>{
-    public class ItemNode <T> {
+    public class ItemNode {
         public T item;
         public ItemNode next;
         public ItemNode previous;
@@ -10,12 +10,11 @@ public class LinkedListDeque <T>{
         }
     }
 
-
     public int size = 0;
     public ItemNode sentinel;
 
     public LinkedListDeque(){
-        sentinel = new ItemNode(0, null, null);
+        sentinel = new ItemNode(null, null, null);
         sentinel.previous = sentinel;
         sentinel.next = sentinel;
     }
@@ -40,10 +39,7 @@ public class LinkedListDeque <T>{
     }
 
     public boolean isEmpty(){
-        if (size == 0){
-            return true;
-        }
-        return false;
+        return size == 0;
     }
 
 
@@ -59,14 +55,33 @@ public class LinkedListDeque <T>{
         }
     }
 
-    public void removeFirst(){
+    public T removeFirst(){
+        if (size == 0) {
+            return null;
+        }
+        T result = sentinel.next.item;
         sentinel.next = sentinel.next.next;
         sentinel.next.previous = sentinel;
         size --;
+        return result;
     }
-    public void removeLast(){
+    public T removeLast(){
+        if (size == 0) {
+            return null;
+        }
+        T result = sentinel.previous.item;
         sentinel.previous = sentinel.previous.previous;
         sentinel.previous.next = sentinel;
         size --;
+        return result;
+    }
+
+    public T get(int index){
+        ItemNode i = sentinel.next;
+        while (index != 0) {
+            i = i.next;
+            index = index - 1;
+        }
+        return i.item;
     }
 }
