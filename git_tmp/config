@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = https://github.com/cathyli66125/cathy_cs61b_sp18.git
+	fetch = +refs/heads/*:refs/remotes/origin/*

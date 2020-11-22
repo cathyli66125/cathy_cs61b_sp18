@@ -1,0 +1,13 @@
+complete project 1a
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Author:    Cathy Li <cathyli@umich.edu>
+# Date:      Sat Nov 21 20:10:46 2020 -0800
+#
+# On branch master
+# Changes to be committed:
+#	new file:   proj1a/LinkedListDeque.java
+#	modified:   proj1a/LinkedListDequeTest.java
+#
