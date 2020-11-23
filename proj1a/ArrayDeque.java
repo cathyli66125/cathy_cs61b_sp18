@@ -4,7 +4,7 @@ public class ArrayDeque<T> {
     private int lastIndex;
     private int size;
     public ArrayDeque() {
-        items = (T[]) new Object[3];
+        items = (T[]) new Object[8];
         firstIndex = 1;
         lastIndex = 0;
         size = 0;
