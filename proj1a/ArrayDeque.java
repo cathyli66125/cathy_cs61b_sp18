@@ -1,5 +1,5 @@
 public class ArrayDeque<T> {
-    private T[] items;
+    public T[] items;
     private int firstIndex;
     private int lastIndex;
     private int size;
@@ -51,10 +51,10 @@ public class ArrayDeque<T> {
             return null;
         } else {
             T result = items[firstIndex];
-            firstIndex = (firstIndex + 1 + items.length) % items.length;
+            firstIndex = (firstIndex + 1) % items.length;
             size--;
-            if (size == 0.5 * items.length) {
-                resizeDn(size);
+            if (size == 0.25 * items.length) {
+                resizeDn(items.length/4);
             }
             return result;
         }
@@ -67,8 +67,8 @@ public class ArrayDeque<T> {
             T result = items[lastIndex];
             lastIndex = (lastIndex - 1 + items.length) % items.length;
             size--;
-            if (size == 0.5 * items.length) {
-                resizeDn(size);
+            if (size == 0.25 * items.length) {
+                resizeDn(items.length/4);
             }
             return result;
         }
@@ -76,28 +76,22 @@ public class ArrayDeque<T> {
 
     private void resizeUp(int cap) {
         T[] a = (T[]) new Object[cap];
-        if (firstIndex < lastIndex) {
-            System.arraycopy(items, 0, a, 0, size);
-        } else {
-            System.arraycopy(items, 0, a, 0, lastIndex + 1);
-            System.arraycopy(items, firstIndex, a, firstIndex + cap - size, size - firstIndex);
-            firstIndex = firstIndex + cap - size;
+        for (int i = firstIndex, j = 0; j != size; i++, j++) {
+            a[j] = items[i % items.length];
         }
         items = a;
+        firstIndex = 0;
+        lastIndex = size - 1;
     }
 
     private void resizeDn(int cap) {
         T[] a = (T[]) new Object[cap];
-        if (firstIndex < lastIndex) {
-            System.arraycopy(items, firstIndex, a, 0, size);
-            firstIndex = 0;
-            lastIndex = cap - 1;
-        } else {
-            System.arraycopy(items, 0, a, 0, lastIndex + 1);
-            System.arraycopy(items, firstIndex, a, lastIndex + 1, items.length - firstIndex);
-            firstIndex = firstIndex + cap - size;
+        for (int i = firstIndex, j = 0; j != size; i++, j++) {
+            a[j] = items[i % items.length];
         }
         items = a;
+        firstIndex = 0;
+        lastIndex = size - 1;
     }
 
     public T get(int index) {
