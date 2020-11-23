@@ -19,11 +19,6 @@ public class LinkedListDeque <T>{
         sentinel.next = sentinel;
     }
 
-    public LinkedListDeque(T x) {
-        sentinel.previous = new ItemNode(x, sentinel, null);
-        sentinel.next = sentinel.previous;
-    }
-
     public void addFirst(T x){
         ItemNode currentFirst = sentinel.next;
         ItemNode newNode = new ItemNode(x, currentFirst, sentinel);
@@ -83,5 +78,16 @@ public class LinkedListDeque <T>{
             index = index - 1;
         }
         return i.item;
+    }
+
+    public T getRecursive(int index){
+        return getRecursiveHelper(sentinel.next, index);
+    }
+
+    private T getRecursiveHelper(ItemNode i, int index){
+        if (index == 0) {
+            return i.item;
+        }
+        return getRecursiveHelper(i.next, index - 1);
     }
 }

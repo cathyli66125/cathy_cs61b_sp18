@@ -5,15 +5,15 @@ public class ArrayDeque<T> {
     public int size;
     public ArrayDeque(){
         items = (T[]) new Object[8];
-        firstIndex = 4;
-        lastIndex = 3;
+        firstIndex = 1;
+        lastIndex = 0;
         size = 0;
     }
     public void addFirst(T x) {
         if (size == items.length) {
             resize(size*2);
         }
-        firstIndex = (firstIndex - 1 + size) % items.length;
+        firstIndex = (firstIndex - 1 + items.length) % items.length;
         items[firstIndex] = x;
 
         size ++;
@@ -23,7 +23,7 @@ public class ArrayDeque<T> {
         if (size == items.length) {
             resize(size*2);
         }
-        lastIndex = (lastIndex + 1 + size) % items.length;
+        lastIndex = (lastIndex + 1 + items.length) % items.length;
         items[lastIndex] = x;
         size ++;
     }
@@ -54,9 +54,9 @@ public class ArrayDeque<T> {
             return null;
         }
         else{
-            firstIndex ++;
+            firstIndex = (firstIndex + 1 + items.length) % items.length;
             size --;
-            return items[firstIndex - 1];
+            return items[(firstIndex - 1 + items.length) % items.length];
         }
     }
 
@@ -65,9 +65,9 @@ public class ArrayDeque<T> {
             return null;
         }
         else{
-            lastIndex --;
+            lastIndex = (lastIndex - 1 + items.length) % items.length;
             size --;
-            return items[lastIndex + 1];
+            return items[(lastIndex + 1 + items.length) % items.length];
         }
     }
 
