@@ -53,7 +53,6 @@ public class ArrayDequeTest {
         lld1.addLast("back");
         passed = checkSize(3, lld1.size()) && passed;
 
-        System.out.println("Printing out deque: ");
         lld1.printDeque();
 
         printTestStatus(passed);
@@ -82,16 +81,11 @@ public class ArrayDequeTest {
         lld1.addLast(2);
         lld1.addLast(3);
         lld1.addLast(4);
-        lld1.addLast(5);
-        lld1.addLast(6);
-        lld1.addLast(7);
-        lld1.addLast(8);
-        lld1.addLast(9);
-        lld1.removeLast();
+        //lld1.removeFirst();
+
         //System.out.println(lld1.get(1));
-        boolean passed = (lld1.get(0) == 1);
-        System.out.print(lld1.get(0));
-        passed = (lld1.get(4) == 5) && passed;
+        boolean passed = (lld1.get(1) == 2);
+        //passed = (lld1.get(4) == 5) && passed;
         //passed = (lld1.removeFirst() == 9) && passed;
         //passed = (lld1.removeLast() == 8) && passed;
         printTestStatus(passed);

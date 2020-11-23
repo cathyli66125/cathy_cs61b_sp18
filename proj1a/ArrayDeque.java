@@ -4,7 +4,7 @@ public class ArrayDeque<T> {
     private int lastIndex;
     private int size;
     public ArrayDeque() {
-        items = (T[]) new Object[8];
+        items = (T[]) new Object[3];
         firstIndex = 1;
         lastIndex = 0;
         size = 0;
@@ -39,7 +39,7 @@ public class ArrayDeque<T> {
     public void printDeque() {
         if (size == 0) {
             return;
-        }else {
+        } else {
             for (int printNums = 0; printNums != size; printNums++) {
                 System.out.println(items[(firstIndex + printNums) % items.length]);
             }
@@ -47,15 +47,16 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
-        if (size == 0){
+        if (size == 0) {
             return null;
         } else {
+            T result = items[firstIndex];
             firstIndex = (firstIndex + 1 + items.length) % items.length;
             size--;
             if (size == 0.5 * items.length) {
                 resizeDn(size);
             }
-            return items[(firstIndex - 1 + items.length) % items.length];
+            return result;
         }
     }
 
@@ -63,12 +64,13 @@ public class ArrayDeque<T> {
         if (size == 0) {
             return null;
         } else {
+            T result = items[lastIndex];
             lastIndex = (lastIndex - 1 + items.length) % items.length;
             size--;
             if (size == 0.5 * items.length) {
                 resizeDn(size);
             }
-            return items[(lastIndex + 1 + items.length) % items.length];
+            return result;
         }
     }
 
