@@ -78,25 +78,22 @@ public class ArrayDequeTest {
 		// should be empty 
 		passed = checkEmpty(true, lld1.isEmpty()) && passed;*/
 
-        lld1.addFirst(1);
-        lld1.addFirst(2);
-        lld1.removeLast();
-        lld1.removeLast();
-        lld1.removeFirst();
-        lld1.addFirst(1);
-        lld1.addFirst(2);
-        lld1.addFirst(3);
-        lld1.addFirst(4);
+        lld1.addLast(1);
+        lld1.addLast(2);
+        lld1.addLast(3);
+        lld1.addLast(4);
         lld1.addLast(5);
         lld1.addLast(6);
         lld1.addLast(7);
         lld1.addLast(8);
-        lld1.addFirst(9);
+        lld1.addLast(9);
+        lld1.removeLast();
         //System.out.println(lld1.get(1));
-        boolean passed = (lld1.get(0) == 9);
-        passed = (lld1.get(4) == 1) && passed;
-        passed = (lld1.removeFirst() == 9) && passed;
-        passed = (lld1.removeLast() == 8) && passed;
+        boolean passed = (lld1.get(0) == 1);
+        System.out.print(lld1.get(0));
+        passed = (lld1.get(4) == 5) && passed;
+        //passed = (lld1.removeFirst() == 9) && passed;
+        //passed = (lld1.removeLast() == 8) && passed;
         printTestStatus(passed);
     }
 
