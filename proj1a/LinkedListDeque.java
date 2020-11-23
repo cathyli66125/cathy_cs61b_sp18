@@ -3,6 +3,7 @@ public class LinkedListDeque<T> {
         private T item;
         private ItemNode next;
         private ItemNode previous;
+
         public ItemNode(T i, ItemNode n, ItemNode p) {
             item = i;
             next = n;
@@ -59,6 +60,7 @@ public class LinkedListDeque<T> {
         size--;
         return result;
     }
+
     public T removeLast() {
         if (size == 0) {
             return null;

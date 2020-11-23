@@ -1,14 +1,16 @@
 public class ArrayDeque<T> {
-    public T[] items;
+    private T[] items;
     private int firstIndex;
     private int lastIndex;
     private int size;
+
     public ArrayDeque() {
         items = (T[]) new Object[8];
         firstIndex = 1;
         lastIndex = 0;
         size = 0;
     }
+
     public void addFirst(T x) {
         if (size == items.length) {
             resizeUp(size * 2);
@@ -54,7 +56,7 @@ public class ArrayDeque<T> {
             firstIndex = (firstIndex + 1) % items.length;
             size--;
             if (size == 0.25 * items.length) {
-                resizeDn(items.length/4);
+                resizeDn(items.length / 4);
             }
             return result;
         }
@@ -68,7 +70,7 @@ public class ArrayDeque<T> {
             lastIndex = (lastIndex - 1 + items.length) % items.length;
             size--;
             if (size == 0.25 * items.length) {
-                resizeDn(items.length/4);
+                resizeDn(items.length / 4);
             }
             return result;
         }
